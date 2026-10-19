@@ -1,0 +1,62 @@
+<Window x:Class="LTECurrentTool.DshNotificationSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DSH 微信通知设置" Width="560" Height="410"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Background="#161616" Foreground="White" FontFamily="Microsoft YaHei UI">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#2A2A2A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="CaretBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="#555555"/>
+            <Setter Property="Padding" Value="7,5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4169E1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter Property="Opacity" Value="0.85"/></Trigger>
+                            <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/><RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="90"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+        <CheckBox x:Name="chkEnabled" Grid.ColumnSpan="2" Content="启用测试结束通知" Foreground="White" Margin="0,0,0,15"/>
+        <TextBlock Grid.Row="1" Text="DSH 地址：" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtBaseUrl" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
+        <TextBlock Grid.Row="2" Text="Bot ID：" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtBotId" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+        <TextBlock Grid.Row="3" Text="Target ID：" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtTargetId" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Foreground="#AAAAAA" TextWrapping="Wrap"
+                   Text="完成、停止或异常结束后通知一次。DSH 需要保持运行，目标须已保存。测试通知使用当前填写的值，不会自动保存配置。"/>
+        <TextBlock x:Name="txtStatus" Grid.Row="5" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="0,12,0,12" Foreground="#ADD8E6"/>
+        <DockPanel Grid.Row="6" Grid.ColumnSpan="2">
+            <Button x:Name="btnTest" Content="发送测试通知" Click="BtnTest_Click" DockPanel.Dock="Left"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnSave" Content="保存" Click="BtnSave_Click" MinWidth="70" Margin="8,0"/>
+                <Button Content="取消" IsCancel="True" MinWidth="70" Background="#444444"/>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

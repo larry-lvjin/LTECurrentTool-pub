@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>LTECurrentTool.ico</ApplicationIcon>
+    <!-- 砍掉不需要的语言卫星资源(EPPlus/NI-VISA等)，仅保留英文，减小体积 -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="LTECurrentTool.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
+    <PackageReference Include="EPPlus" Version="7.5.4" />
+    <PackageReference Include="NationalInstruments.Visa" Version="23.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="LTECurrentTool.ICO" />
+  </ItemGroup>
+
+</Project>
